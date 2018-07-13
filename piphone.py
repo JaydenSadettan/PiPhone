@@ -4,7 +4,7 @@
 # http://www.adafruit.com/products/998  (Raspberry Pi Model B)
 # http://www.adafruit.com/products/1601 (PiTFT Mini Kit)
 #
-# Prerequisite tutorials: aside from the basic Raspbian setup and PiTFT setup
+# Prerequisite tutorials: aside from the basic Rasplsbian setup and PiTFT setup
 # http://learn.adafruit.com/adafruit-pitft-28-inch-resistive-touchscreen-display-raspberry-pi
 #
 # piphone.py by David Hunt (dave@davidhunt.ie)
@@ -293,15 +293,15 @@ if img:
 pygame.display.update()
 sleep(2)
 
-print "Initialising Modem.."
-serialport = serial.Serial("/dev/ttyAMA0", 115200, timeout=0.5)
-serialport.write("AT\r")
-response = serialport.readlines(None)
-serialport.write("ATE0\r")
-response = serialport.readlines(None)
-serialport.write("AT\r")
-response = serialport.readlines(None)
-print response
+# print "Initialising Modem.."
+# serialport = serial.Serial("/dev/ttyAMA0", 115200, timeout=0.5)
+# serialport.write("AT\r")
+# response = serialport.readlines(None)
+# serialport.write("ATE0\r")
+# response = serialport.readlines(None)
+# serialport.write("AT\r")
+# response = serialport.readlines(None)
+# print response
 
 # Main loop ----------------------------------------------------------------
 
