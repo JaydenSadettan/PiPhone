@@ -282,7 +282,7 @@ print"Load Settings"
 loadSettings()  # Must come last; fiddles with Button/Icon states
 
 print "loading background.."
-img = pygame.image.load("icons/PiPhone.png")
+img = pygame.image.load("icons/rough1.png")
 
 if img is None or img.get_height() < 320:  # Letterbox, clear background
     screen.fill(0)
