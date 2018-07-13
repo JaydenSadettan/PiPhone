@@ -25,6 +25,7 @@ from datetime import datetime, timedelta
 import serial
 import os
 
+
 # UI classes ---------------------------------------------------------------
 
 # Icon is a very simple bitmap class, just associates a name and a pygame
@@ -197,7 +198,7 @@ icons = []  # This list gets populated at startup
 buttons = [
 
     # Screen 0 for numeric input
-    [Button((30, 0, 320, 60), bg='box'),
+    [Button((30, 0, 480, 60), bg='box'),
      Button((30, 60, 60, 60), bg='1', cb=numericCallback, value=1),
      Button((90, 60, 60, 60), bg='2', cb=numericCallback, value=2),
      Button((150, 60, 60, 60), bg='3', cb=numericCallback, value=3),
@@ -213,7 +214,7 @@ buttons = [
      Button((180, 260, 60, 60), bg='del2', cb=numericCallback, value=10),
      Button((90, 260, 60, 60), bg='call', cb=numericCallback, value=12)],
     # Screen 1 for numeric input
-    [Button((30, 0, 320, 60), bg='box'),
+    [Button((30, 0, 480, 60), bg='box'),
      Button((90, 260, 60, 60), bg='hang', cb=numericCallback, value=12)]
 ]
 
@@ -250,7 +251,6 @@ os.putenv('SDL_VIDEODRIVER', 'fbcon')
 os.putenv('SDL_FBDEV', '/dev/fb1')
 os.putenv('SDL_MOUSEDRV', 'TSLIB')
 os.putenv('SDL_MOUSEDEV', '/dev/input/touchscreen')
-# os.environ["SDL_VIDEODRIVER"] = "dummy"
 
 # Init pygame and screen
 print "Initting..."
@@ -260,7 +260,6 @@ pygame.mouse.set_visible(False)
 print "Setting fullscreen..."
 modes = pygame.display.list_modes(16)
 screen = pygame.display.set_mode(modes[0], FULLSCREEN, 16)
-# screen = pygame.display.set_mode((240,320))
 
 print "Loading Icons..."
 # Load all icons at startup.
@@ -283,7 +282,7 @@ print"Load Settings"
 loadSettings()  # Must come last; fiddles with Button/Icon states
 
 print "loading background.."
-img = pygame.image.load("icons/rough1.png")
+img = pygame.image.load("icons/PiPhone.png")
 
 if img is None or img.get_height() < 320:  # Letterbox, clear background
     screen.fill(0)
@@ -327,7 +326,7 @@ while (True):
         screen.fill(0)
     if img:
         screen.blit(img,
-                    ((320 - img.get_width()) / 2,
+                    ((480 - img.get_width()) / 2,
                      (480 - img.get_height()) / 2))
 
     # Overlay buttons on display and update
