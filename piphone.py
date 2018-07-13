@@ -322,11 +322,11 @@ while (True):
             # if screenMode >= 1 or screenMode != screenModePrior: break
         if screen_change == 1 or screenMode != screenModePrior: break
 
-    if img is None or img.get_height() < 350:
+    if img is None or img.get_height() < 320:
         screen.fill(0)
     if img:
         screen.blit(img,
-                    ((480 - img.get_width()) / 2,
+                    ((320 - img.get_width()) / 2,
                      (480 - img.get_height()) / 2))
 
     # Overlay buttons on display and update
