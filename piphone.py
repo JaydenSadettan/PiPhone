@@ -285,12 +285,12 @@ loadSettings()  # Must come last; fiddles with Button/Icon states
 print "loading background.."
 img = pygame.image.load("icons/rough1.png")
 
-if img is None or img.get_height() < 240:  # Letterbox, clear background
+if img is None or img.get_height() < 320:  # Letterbox, clear background
     screen.fill(0)
 if img:
     screen.blit(img,
-                ((240 - img.get_width()) / 2,
-                 (320 - img.get_height()) / 2))
+                ((320 - img.get_width()) / 2,
+                 (480 - img.get_height()) / 2))
 pygame.display.update()
 sleep(2)
 
@@ -323,12 +323,12 @@ while (True):
             # if screenMode >= 1 or screenMode != screenModePrior: break
         if screen_change == 1 or screenMode != screenModePrior: break
 
-    if img is None or img.get_height() < 240:
+    if img is None or img.get_height() < 350:
         screen.fill(0)
     if img:
         screen.blit(img,
-                    ((240 - img.get_width()) / 2,
-                     (320 - img.get_height()) / 2))
+                    ((320 - img.get_width()) / 2,
+                     (480 - img.get_height()) / 2))
 
     # Overlay buttons on display and update
     for i, b in enumerate(buttons[screenMode]):
