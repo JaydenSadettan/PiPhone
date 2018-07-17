@@ -198,7 +198,7 @@ icons = []  # This list gets populated at startup
 buttons = [
 
     # Screen 0 for numeric input
-    [Button((40, 0, 480, 80), bg='box'),
+    [Button((40, 0, 480, 60), bg='box'),
      Button((40, 80, 60, 60), bg='1', cb=numericCallback, value=1),
      Button((120, 80, 60, 60), bg='2', cb=numericCallback, value=2),
      Button((200, 80, 60, 60), bg='3', cb=numericCallback, value=3),
