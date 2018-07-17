@@ -87,8 +87,8 @@ class Button:
         y1 = self.rect[1]
         x2 = x1 + self.rect[2] - 1
         y2 = y1 + self.rect[3] - 1
-        if ((pos[0] >= x1) and (pos[0] <= x2) and
-                (pos[1] >= y1) and (pos[1] <= y2)):
+        if ((pos[1] >= x1) and (pos[1] <= x2) and
+                (pos[0] >= y1) and (pos[0] <= y2)):
             if self.callback:
                 if self.value is None:
                     self.callback()
