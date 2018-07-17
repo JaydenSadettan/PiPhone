@@ -198,23 +198,23 @@ icons = []  # This list gets populated at startup
 buttons = [
 
     # Screen 0 for numeric input
-    [Button((0, 0, 320, 60), bg='box'),
-     Button((80, 80, 60, 60), bg='1', cb=numericCallback, value=1),
-     Button((160, 80, 60, 60), bg='2', cb=numericCallback, value=2),
-     Button((240, 80, 60, 60), bg='3', cb=numericCallback, value=3),
-     Button((80, 160, 60, 60), bg='4', cb=numericCallback, value=4),
-     Button((160, 160, 60, 60), bg='5', cb=numericCallback, value=5),
-     Button((240, 160, 60, 60), bg='6', cb=numericCallback, value=6),
-     Button((80, 240, 60, 60), bg='7', cb=numericCallback, value=7),
-     Button((160, 240, 60, 60), bg='8', cb=numericCallback, value=8),
-     Button((240, 240, 60, 60), bg='9', cb=numericCallback, value=9),
-     Button((80, 320, 60, 60), bg='star', cb=numericCallback, value=0),
-     Button((160, 320, 60, 60), bg='0', cb=numericCallback, value=0),
-     Button((240, 320, 60, 60), bg='hash', cb=numericCallback, value=0),
-     Button((240, 400, 60, 60), bg='del2', cb=numericCallback, value=10),
-     Button((160, 400, 60, 60), bg='call', cb=numericCallback, value=12)],
+    [Button((70, 0, 320, 60), bg='box'),
+     Button((70, 80, 60, 60), bg='1', cb=numericCallback, value=1),
+     Button((130, 80, 60, 60), bg='2', cb=numericCallback, value=2),
+     Button((210, 80, 60, 60), bg='3', cb=numericCallback, value=3),
+     Button((70, 160, 60, 60), bg='4', cb=numericCallback, value=4),
+     Button((130, 160, 60, 60), bg='5', cb=numericCallback, value=5),
+     Button((210, 160, 60, 60), bg='6', cb=numericCallback, value=6),
+     Button((70, 240, 60, 60), bg='7', cb=numericCallback, value=7),
+     Button((130, 240, 60, 60), bg='8', cb=numericCallback, value=8),
+     Button((210, 240, 60, 60), bg='9', cb=numericCallback, value=9),
+     Button((70, 320, 60, 60), bg='star', cb=numericCallback, value=0),
+     Button((130, 320, 60, 60), bg='0', cb=numericCallback, value=0),
+     Button((210, 320, 60, 60), bg='hash', cb=numericCallback, value=0),
+     Button((210, 400, 60, 60), bg='del2', cb=numericCallback, value=10),
+     Button((130, 400, 60, 60), bg='call', cb=numericCallback, value=12)],
     # Screen 1 for numeric input
-    [Button((40, 0, 480, 80), bg='box'),
+    [Button((70, 0, 320, 60), bg='box'),
      Button((120, 350, 60, 60), bg='hang', cb=numericCallback, value=12)]
 ]
 
