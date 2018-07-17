@@ -183,7 +183,7 @@ interval_delay = 0.2
 dict_idx = "Interval"
 v = {"Pulse": 100,
      "Interval": 3000,
-     "Images": 150}
+     "Images": 200}
 
 icons = []  # This list gets populated at startup
 
@@ -198,24 +198,24 @@ icons = []  # This list gets populated at startup
 buttons = [
 
     # Screen 0 for numeric input
-    [Button((30, 0, 480, 60), bg='box'),
-     Button((30, 60, 60, 60), bg='1', cb=numericCallback, value=1),
-     Button((90, 60, 60, 60), bg='2', cb=numericCallback, value=2),
-     Button((150, 60, 60, 60), bg='3', cb=numericCallback, value=3),
-     Button((30, 110, 60, 60), bg='4', cb=numericCallback, value=4),
-     Button((90, 110, 60, 60), bg='5', cb=numericCallback, value=5),
-     Button((150, 110, 60, 60), bg='6', cb=numericCallback, value=6),
-     Button((30, 160, 60, 60), bg='7', cb=numericCallback, value=7),
-     Button((90, 160, 60, 60), bg='8', cb=numericCallback, value=8),
-     Button((150, 160, 60, 60), bg='9', cb=numericCallback, value=9),
-     Button((30, 210, 60, 60), bg='star', cb=numericCallback, value=0),
-     Button((90, 210, 60, 60), bg='0', cb=numericCallback, value=0),
-     Button((150, 210, 60, 60), bg='hash', cb=numericCallback, value=0),
-     Button((180, 260, 60, 60), bg='del2', cb=numericCallback, value=10),
-     Button((90, 260, 60, 60), bg='call', cb=numericCallback, value=12)],
+    [Button((40, 0, 480, 80), bg='box'),
+     Button((40, 80, 80, 80), bg='1', cb=numericCallback, value=1),
+     Button((120, 80, 80, 80), bg='2', cb=numericCallback, value=2),
+     Button((200, 80, 80, 80), bg='3', cb=numericCallback, value=3),
+     Button((40, 110, 80, 80), bg='4', cb=numericCallback, value=4),
+     Button((120, 110, 80, 80), bg='5', cb=numericCallback, value=5),
+     Button((200, 110, 80, 80), bg='6', cb=numericCallback, value=6),
+     Button((40, 180, 80, 80), bg='7', cb=numericCallback, value=7),
+     Button((120, 180, 80, 80), bg='8', cb=numericCallback, value=8),
+     Button((200, 180, 80, 80), bg='9', cb=numericCallback, value=9),
+     Button((40, 280, 80, 80), bg='star', cb=numericCallback, value=0),
+     Button((120, 280, 80, 80), bg='0', cb=numericCallback, value=0),
+     Button((200, 280, 80, 80), bg='hash', cb=numericCallback, value=0),
+     Button((180, 350, 80, 80), bg='del2', cb=numericCallback, value=10),
+     Button((120, 350, 80, 80), bg='call', cb=numericCallback, value=12)],
     # Screen 1 for numeric input
-    [Button((30, 0, 480, 60), bg='box'),
-     Button((90, 260, 60, 60), bg='hang', cb=numericCallback, value=12)]
+    [Button((40, 0, 480, 80), bg='box'),
+     Button((120, 350, 80, 80), bg='hang', cb=numericCallback, value=12)]
 ]
 
 
