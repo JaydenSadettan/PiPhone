@@ -317,9 +317,9 @@ while True:
                 pos = pygame.mouse.get_pos()
                 for b in buttons[screenMode]:
                     f = open("PiPhoneLogs.txt", "a+")
-                    f.write(pos)
+                    f.write(str(pos))
                     f.write("\n")
-                    f.write(b)
+                    f.write(str(b))
                     f.write("\n")
                     if b.selected(pos):
                         break
