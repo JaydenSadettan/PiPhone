@@ -24,6 +24,7 @@ from time import sleep
 from datetime import datetime, timedelta
 import serial
 import os
+import time
 
 
 # UI classes ---------------------------------------------------------------
@@ -312,24 +313,27 @@ while True:
     # Process touchscreen input
     while True:
         screen_change = 0
+        time.sleep(0.1)
         for event in pygame.event.get():
             if event.type is MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 for b in buttons[screenMode]:
+                    time.sleep(0.1)
                     if b.selected(pos):
+                        time.sleep(0.1)
                         break
                 screen_change = 1
 
             # if screenMode >= 1 or screenMode != screenModePrior: break
         if screen_change == 1 or screenMode != screenModePrior: break
-
+    time.sleep(0.1)
     if img is None or img.get_height() < 320:
         screen.fill(0)
     if img:
         screen.blit(img,
                     ((320 - img.get_width()) / 2,
                      (480 - img.get_height()) / 2))
-
+    time.sleep(0.1)
     # Overlay buttons on display and update
     for i, b in enumerate(buttons[screenMode]):
         b.draw(screen)
