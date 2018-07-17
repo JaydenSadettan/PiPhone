@@ -199,23 +199,23 @@ buttons = [
 
     # Screen 0 for numeric input
     [Button((50, 0, 320, 60), bg='box'),
-     Button((50, 80, 60, 60), bg='1', cb=numericCallback, value=1),
-     Button((130, 80, 60, 60), bg='2', cb=numericCallback, value=2),
-     Button((210, 80, 60, 60), bg='3', cb=numericCallback, value=3),
-     Button((50, 160, 60, 60), bg='4', cb=numericCallback, value=4),
-     Button((130, 160, 60, 60), bg='5', cb=numericCallback, value=5),
-     Button((210, 160, 60, 60), bg='6', cb=numericCallback, value=6),
-     Button((50, 240, 60, 60), bg='7', cb=numericCallback, value=7),
-     Button((130, 240, 60, 60), bg='8', cb=numericCallback, value=8),
-     Button((210, 240, 60, 60), bg='9', cb=numericCallback, value=9),
-     Button((50, 320, 60, 60), bg='star', cb=numericCallback, value=0),
-     Button((130, 320, 60, 60), bg='0', cb=numericCallback, value=0),
-     Button((210, 320, 60, 60), bg='hash', cb=numericCallback, value=0),
-     Button((210, 400, 60, 60), bg='del2', cb=numericCallback, value=10),
-     Button((130, 400, 60, 60), bg='call', cb=numericCallback, value=12)],
+     Button((50, 80, 80, 80), bg='1', cb=numericCallback, value=1),
+     Button((130, 80, 80, 80), bg='2', cb=numericCallback, value=2),
+     Button((210, 80, 80, 80), bg='3', cb=numericCallback, value=3),
+     Button((50, 160, 80, 80), bg='4', cb=numericCallback, value=4),
+     Button((130, 160, 80, 80), bg='5', cb=numericCallback, value=5),
+     Button((210, 160, 80, 80), bg='6', cb=numericCallback, value=6),
+     Button((50, 240, 80, 80), bg='7', cb=numericCallback, value=7),
+     Button((130, 240, 80, 80), bg='8', cb=numericCallback, value=8),
+     Button((210, 240, 80, 80), bg='9', cb=numericCallback, value=9),
+     Button((50, 320, 80, 80), bg='star', cb=numericCallback, value=0),
+     Button((130, 320, 80, 80), bg='0', cb=numericCallback, value=0),
+     Button((210, 320, 80, 80), bg='hash', cb=numericCallback, value=0),
+     Button((210, 400, 80, 80), bg='del2', cb=numericCallback, value=10),
+     Button((130, 400, 80, 80), bg='call', cb=numericCallback, value=12)],
     # Screen 1 for numeric input
-    [Button((50, 0, 320, 60), bg='box'),
-     Button((130, 350, 60, 60), bg='hang', cb=numericCallback, value=12)]
+    [Button((50, 0, 320, 80), bg='box'),
+     Button((130, 350, 80, 80), bg='hang', cb=numericCallback, value=12)]
 ]
 
 
