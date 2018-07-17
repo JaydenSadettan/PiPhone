@@ -317,6 +317,12 @@ while True:
             if event.type is MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 for b in buttons[screenMode]:
+                    f = open("PiPhoneLogs.txt", "a+")
+                    f.write(str(pos))
+                    f.write("\n")
+                    f.write(str(b.callback))
+                    f.write("\n")
+                    f.close()
                     if b.selected(pos):
                         break
                 screen_change = 1
