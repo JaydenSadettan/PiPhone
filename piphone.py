@@ -216,7 +216,7 @@ buttons = [
      Button((130, 400, 80, 80), bg='call', cb=numericCallback, value=12)],
     # Screen 1 for numeric input
     [Button((50, 0, 320, 80), bg='box'),
-     Button((130, 350, 80, 80), bg='hang', cb=numericCallback, value=12)]
+     Button((130, 400, 80, 80), bg='hang', cb=numericCallback, value=12)]
 ]
 
 
@@ -295,7 +295,7 @@ pygame.display.update()
 sleep(2)
 
 print "Initialising Modem.."
-serialport = serial.Serial("/dev/ttyUSB0", 115200, timeout=0.5)
+serialport = serial.Serial("/dev/ttyUSB2", 115200, timeout=0.5)
 serialport.write("AT\r")
 response = serialport.readlines(None)
 serialport.write("ATE0\r")
