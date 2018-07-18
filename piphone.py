@@ -294,15 +294,15 @@ if img:
 pygame.display.update()
 sleep(2)
 
-# print "Initialising Modem.."
-# serialport = serial.Serial("/dev/ttyAMA0", 115200, timeout=0.5)
-# serialport.write("AT\r")
-# response = serialport.readlines(None)
-# serialport.write("ATE0\r")
-# response = serialport.readlines(None)
-# serialport.write("AT\r")
-# response = serialport.readlines(None)
-# print response
+print "Initialising Modem.."
+serialport = serial.Serial("/dev/ttyUSB0", 115200, timeout=0.5)
+serialport.write("AT\r")
+response = serialport.readlines(None)
+serialport.write("ATE0\r")
+response = serialport.readlines(None)
+serialport.write("AT\r")
+response = serialport.readlines(None)
+print response
 
 # Main loop ----------------------------------------------------------------
 
