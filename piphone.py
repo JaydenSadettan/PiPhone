@@ -22,6 +22,7 @@ from pygame.locals import *
 from subprocess import call
 from time import sleep
 from datetime import datetime, timedelta
+from curses import ascii
 import serial
 import os
 import time
@@ -128,13 +129,19 @@ class Button:
 def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
     global screenMode
     global numberstring
+    global messagestring
     global phonecall
-    if n < 10 and screenMode == 0:
+
+    if screenMode == 2 and n != 12:
+        messagestring = messagestring + str(n)
+    elif n < 10 and screenMode == 0:
         numberstring = numberstring + str(n)
     elif n == 10 and screenMode == 0:
         numberstring = numberstring[:-1]
+    elif n == 11 and screenMode == 0:
+        screenMode = 2
     elif n == 12:
-        # if phonecall == 0:
+
         if screenMode == 0:
             if len(numberstring) > 0:
                 print("Calling " + numberstring);
@@ -145,6 +152,23 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
                 print response
                 # phonecall = 1
                 screenMode = 1
+        elif screenMode == 2:
+            if len(numberstring) > 0:
+                print("Message " + messagestring);
+                serialport.write("AT\r")
+                response = serialport.readlines(None)
+                serialport.write('AT+CMGS="%s"\r\n' % numberstring)
+                response = serialport.readlines(None)
+                serialport.write(messagestring)
+                serialport.write(ascii.ctrl('z'))
+                time.sleep(25)
+                print serialport.readline()
+                print serialport.readline()
+                print serialport.readline()
+                print serialport.readline()
+                print response
+                screenMode = 0
+
         else:
             print("Hanging Up...")
             serialport.write("AT\r")
@@ -152,8 +176,8 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
             serialport.write("ATH\r")
             response = serialport.readlines(None)
             print response
-            # phonecall = 0
             screenMode = 0
+            numberstring = ""
         if len(numberstring) > 0:
             numeric = int(numberstring)
             v[dict_idx] = numeric
@@ -169,6 +193,7 @@ screenModePrior = -1  # Prior screen mode (for detecting changes)
 iconPath = 'icons'  # Subdirectory containing UI bitmaps (PNG format)
 numeric = 0  # number from numeric keypad
 numberstring = ""
+messagestring = ""
 motorRunning = 0
 motorDirection = 0
 returnScreen = 0
@@ -212,11 +237,28 @@ buttons = [
      Button((50, 320, 80, 80), bg='star', cb=numericCallback, value=0),
      Button((130, 320, 80, 80), bg='0', cb=numericCallback, value=0),
      Button((210, 320, 80, 80), bg='hash', cb=numericCallback, value=0),
-     Button((210, 400, 80, 80), bg='del2', cb=numericCallback, value=10),
-     Button((130, 400, 80, 80), bg='call', cb=numericCallback, value=12)],
+     Button((50, 400, 80, 80), bg='hash', cb=numericCallback, value=11),  # Testing MyCroft, or even messages.
+     Button((130, 400, 80, 80), bg='call', cb=numericCallback, value=12),
+     Button((210, 400, 80, 80), bg='del2', cb=numericCallback, value=10)],
     # Screen 1 for numeric input
     [Button((50, 0, 320, 80), bg='box'),
-     Button((130, 400, 80, 80), bg='hang', cb=numericCallback, value=12)]
+     Button((130, 400, 80, 80), bg='hang', cb=numericCallback, value=12)],
+    # Screen 2 for message
+    [Button((50, 80, 80, 80), bg='A', cb=numericCallback, value="A"),
+     Button((130, 80, 80, 80), bg='B', cb=numericCallback, value="B"),
+     Button((210, 80, 80, 80), bg='C', cb=numericCallback, value="C"),
+     Button((50, 160, 80, 80), bg='D', cb=numericCallback, value="D"),
+     Button((130, 160, 80, 80), bg='E', cb=numericCallback, value="E"),
+     Button((210, 160, 80, 80), bg='F', cb=numericCallback, value="F"),
+     Button((50, 240, 80, 80), bg='G', cb=numericCallback, value="G"),
+     Button((130, 240, 80, 80), bg='H', cb=numericCallback, value="H"),
+     Button((210, 240, 80, 80), bg='I', cb=numericCallback, value="I"),
+     Button((50, 320, 80, 80), bg='star', cb=numericCallback, value=0),
+     Button((130, 320, 80, 80), bg='0', cb=numericCallback, value=0),
+     Button((210, 320, 80, 80), bg='hash', cb=numericCallback, value=0),
+    Button((130, 400, 80, 80), bg='call', cb=numericCallback, value=12),
+     Button((210, 400, 80, 80), bg='del2', cb=numericCallback, value=10)]
+
 ]
 
 
@@ -302,6 +344,8 @@ serialport.write("ATE0\r")
 response = serialport.readlines(None)
 serialport.write("AT\r")
 response = serialport.readlines(None)
+serialport.write("AT+CMGF=1\r\n")
+response = serialport.readlines(None)
 print response
 
 # Main loop ----------------------------------------------------------------
@@ -334,6 +378,7 @@ while True:
         screen.blit(img,
                     ((320 - img.get_width()) / 2,
                      (480 - img.get_height()) / 2))
+
     # Overlay buttons on display and update
     for i, b in enumerate(buttons[screenMode]):
         b.draw(screen)
@@ -341,9 +386,16 @@ while True:
         myfont = pygame.font.SysFont("Arial", 40)
         label = myfont.render(numberstring, 1, (255, 255, 255))
         screen.blit(label, (10, 2))
-    else:
+    elif screenMode == 1:
         myfont = pygame.font.SysFont("Arial", 35)
         label = myfont.render("Calling", 1, (255, 255, 255))
+        screen.blit(label, (10, 80))
+        myfont = pygame.font.SysFont("Arial", 35)
+        label = myfont.render(numberstring + "...", 1, (255, 255, 255))
+        screen.blit(label, (10, 120))
+    else:
+        myfont = pygame.font.SysFont("Arial", 35)
+        label = myfont.render("Messaging", 1, (255, 255, 255))
         screen.blit(label, (10, 80))
         myfont = pygame.font.SysFont("Arial", 35)
         label = myfont.render(numberstring + "...", 1, (255, 255, 255))
