@@ -134,13 +134,13 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
 
     if screenMode == 2 and n != 12:
         if n == 10:
-            messagestring = messagestring[:-1]
+            messagestring = ""
         else:
             messagestring = messagestring + str(n)
     elif n < 10 and screenMode == 0:
         numberstring = numberstring + str(n)
     elif n == 10 and screenMode == 0:
-        numberstring = numberstring[:-1]
+        numberstring = ""
     elif n == 11 and screenMode == 0:
         screenMode = 2
     elif n == 12:
@@ -170,9 +170,15 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
                 print serialport.readline()
                 print serialport.readline()
                 print
+                if len(numberstring) > 0:
+                    numeric = int(numberstring)
+                    v[dict_idx] = numeric
+                messagestring = ""
+                numberstring = ""
+                screenMode = 0
                 label = myfont.render("", 1, (255, 255, 255))
                 screen.blit(label, (10, 2))
-                screenMode = 0
+
 
         else:
             print("Hanging Up...")
@@ -182,12 +188,12 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
             response = serialport.readlines(None)
             print response
             screenMode = 0
+            if len(numberstring) > 0:
+                numeric = int(numberstring)
+                v[dict_idx] = numeric
             numberstring = ""
             label = myfont.render("", 1, (255, 255, 255))
             screen.blit(label, (10, 2))
-        if len(numberstring) > 0:
-            numeric = int(numberstring)
-            v[dict_idx] = numeric
 
 
 # Global stuff -------------------------------------------------------------
@@ -258,10 +264,10 @@ buttons = [
      Button((130, 160, 80, 80), bg='5', cb=numericCallback, value="No"),
      Button((210, 160, 80, 80), bg='6', cb=numericCallback, value="I don't know"),
      Button((50, 240, 80, 80), bg='7', cb=numericCallback, value="."),
-     Button((130, 240, 80, 80), bg='8', cb=numericCallback, value=" "),
+     Button((130, 240, 80, 80), bg='8', cb=numericCallback, value=","),
      Button((210, 240, 80, 80), bg='9', cb=numericCallback, value="!"),
      Button((50, 320, 80, 80), bg='star', cb=numericCallback, value=0),
-     Button((130, 320, 80, 80), bg='0', cb=numericCallback, value="HELP"),
+     Button((130, 320, 80, 80), bg='0', cb=numericCallback, value=" "),
      Button((210, 320, 80, 80), bg='hash', cb=numericCallback, value=0),
      Button((130, 400, 80, 80), bg='call', cb=numericCallback, value=12),
      Button((210, 400, 80, 80), bg='del2', cb=numericCallback, value=10)],
