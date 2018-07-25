@@ -133,6 +133,9 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
     global phonecall
 
     if screenMode == 2 and n != 12:
+        if n == 10:
+            messagestring = messagestring[:-1]
+        else:
         messagestring = messagestring + str(n)
     elif n < 10 and screenMode == 0:
         numberstring = numberstring + str(n)
@@ -244,20 +247,20 @@ buttons = [
     [Button((50, 0, 320, 80), bg='box'),
      Button((130, 400, 80, 80), bg='hang', cb=numericCallback, value=12)],
     # Screen 2 for message
-    [Button((50, 80, 80, 80), bg='A', cb=numericCallback, value="A"),
-     Button((130, 80, 80, 80), bg='B', cb=numericCallback, value="B"),
-     Button((210, 80, 80, 80), bg='C', cb=numericCallback, value="C"),
-     Button((50, 160, 80, 80), bg='D', cb=numericCallback, value="D"),
-     Button((130, 160, 80, 80), bg='E', cb=numericCallback, value="E"),
-     Button((210, 160, 80, 80), bg='F', cb=numericCallback, value="F"),
-     Button((50, 240, 80, 80), bg='G', cb=numericCallback, value="G"),
-     Button((130, 240, 80, 80), bg='H', cb=numericCallback, value="H"),
-     Button((210, 240, 80, 80), bg='I', cb=numericCallback, value="I"),
+    [Button((50, 80, 80, 80), bg='1', cb=numericCallback, value="Hi"),
+     Button((130, 80, 80, 80), bg='2', cb=numericCallback, value="Take Care"),
+     Button((210, 80, 80, 80), bg='3', cb=numericCallback, value="Thank you"),
+     Button((50, 160, 80, 80), bg='4', cb=numericCallback, value="Yes"),
+     Button((130, 160, 80, 80), bg='5', cb=numericCallback, value="No"),
+     Button((210, 160, 80, 80), bg='6', cb=numericCallback, value="I don't know"),
+     Button((50, 240, 80, 80), bg='7', cb=numericCallback, value="."),
+     Button((130, 240, 80, 80), bg='8', cb=numericCallback, value=" "),
+     Button((210, 240, 80, 80), bg='9', cb=numericCallback, value="!"),
      Button((50, 320, 80, 80), bg='star', cb=numericCallback, value=0),
-     Button((130, 320, 80, 80), bg='0', cb=numericCallback, value=0),
+     Button((130, 320, 80, 80), bg='0', cb=numericCallback, value="HELP"),
      Button((210, 320, 80, 80), bg='hash', cb=numericCallback, value=0),
-    Button((130, 400, 80, 80), bg='call', cb=numericCallback, value=12),
-     Button((210, 400, 80, 80), bg='del2', cb=numericCallback, value=10)]
+     Button((130, 400, 80, 80), bg='call', cb=numericCallback, value=12),
+     Button((210, 400, 80, 80), bg='del2', cb=numericCallback, value=10)],
 
 ]
 
@@ -368,7 +371,7 @@ while True:
                     f.write("\n")
                     f.close()
                     if b.selected(pos):
-                        break
+                        break;
                 screen_change = 1
             # if screenMode >= 1 or screenMode != screenModePrior: break
         if screen_change == 1 or screenMode != screenModePrior: break
@@ -387,6 +390,8 @@ while True:
         label = myfont.render(numberstring, 1, (255, 255, 255))
         screen.blit(label, (10, 2))
     elif screenMode == 1:
+        label = myfont.render("", 1, (255, 255, 255))
+        screen.blit(label, (10, 2))
         myfont = pygame.font.SysFont("Arial", 35)
         label = myfont.render("Calling", 1, (255, 255, 255))
         screen.blit(label, (10, 80))
