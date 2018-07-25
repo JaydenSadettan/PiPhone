@@ -169,7 +169,9 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
                 print serialport.readline()
                 print serialport.readline()
                 print serialport.readline()
-                print response
+                print
+                label = myfont.render("", 1, (255, 255, 255))
+                screen.blit(label, (10, 2))
                 screenMode = 0
 
         else:
@@ -181,6 +183,8 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
             print response
             screenMode = 0
             numberstring = ""
+            label = myfont.render("", 1, (255, 255, 255))
+            screen.blit(label, (10, 2))
         if len(numberstring) > 0:
             numeric = int(numberstring)
             v[dict_idx] = numeric
@@ -400,6 +404,8 @@ while True:
         screen.blit(label, (10, 120))
     else:
         myfont = pygame.font.SysFont("Arial", 35)
+        label = myfont.render(messagestring, 1, (255, 255, 255))
+        screen.blit(label, (10, 2))
         label = myfont.render("Messaging", 1, (255, 255, 255))
         screen.blit(label, (10, 80))
         myfont = pygame.font.SysFont("Arial", 35)
