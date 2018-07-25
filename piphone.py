@@ -136,7 +136,7 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
         if n == 10:
             messagestring = messagestring[:-1]
         else:
-        messagestring = messagestring + str(n)
+            messagestring = messagestring + str(n)
     elif n < 10 and screenMode == 0:
         numberstring = numberstring + str(n)
     elif n == 10 and screenMode == 0:
