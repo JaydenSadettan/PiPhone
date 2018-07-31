@@ -154,7 +154,7 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
     elif n == 10 and screenMode == 0:
         raise SystemExit()
     elif n == 11 and screenMode == 0:
-        reset_screen()
+        reset_screen(screen, img)
         screenMode = 2
     elif n == 12:
 
@@ -399,10 +399,8 @@ while True:
     if screenMode == 0:
         myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render(numberstring, 1, (255, 255, 255))
-        screen.blit(label, (10, 120))
-    elif screenMode == 1:
-        label = myfont.render("", 1, (255, 255, 255))
         screen.blit(label, (10, 2))
+    elif screenMode == 1:
         myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render("Calling", 1, (255, 255, 255))
         screen.blit(label, (10, 80))
