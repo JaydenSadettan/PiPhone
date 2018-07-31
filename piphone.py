@@ -18,10 +18,10 @@ import fnmatch
 import io
 import pygame
 import threading
+import sys
 from pygame.locals import *
 from subprocess import call
 from time import sleep
-from datetime import datetime, timedelta
 from curses import ascii
 import serial
 import os
@@ -46,12 +46,13 @@ class Icon:
 
 
 # Reset Screen classes ---------------------------------------------------------------
-def reset_screen(screen , img):
+def reset_screen(screen, img):
     print "loading background.."
+    screen.fill((255, 255, 255))
     if img is None or img.get_height() < 320:  # Letterbox, clear background
         screen.fill(0)
     if img:
-        screen.fill(img,
+        screen.blit(img,
                     ((320 - img.get_width()) / 2,
                      (480 - img.get_height()) / 2))
     pygame.display.update()
