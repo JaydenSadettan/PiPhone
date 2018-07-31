@@ -45,6 +45,18 @@ class Icon:
             pass
 
 
+# Reset Screen classes ---------------------------------------------------------------
+def reset_screen(screen , img):
+    print "loading background.."
+    if img is None or img.get_height() < 320:  # Letterbox, clear background
+        screen.fill(0)
+    if img:
+        screen.blit(img,
+                    ((320 - img.get_width()) / 2,
+                     (480 - img.get_height()) / 2))
+    pygame.display.update()
+    sleep(2)
+
 # Button is a simple tappable screen region.  Each has:
 #  - bounding rect ((X,Y,W,H) in pixels)
 #  - optional background color and/or Icon (or None), always centered
@@ -175,11 +187,7 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
                     v[dict_idx] = numeric
                 messagestring = ""
                 numberstring = ""
-                screenMode = 0
-                label = myfont.render("", 1, (255, 255, 255))
-                screen.blit(label, (10, 2))
-
-
+                reset_screen(screen, img)
         else:
             print("Hanging Up...")
             serialport.write("AT\r")
@@ -192,8 +200,7 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
                 numeric = int(numberstring)
                 v[dict_idx] = numeric
             numberstring = ""
-            label = myfont.render("", 1, (255, 255, 255))
-            screen.blit(label, (10, 2))
+            reset_screen(screen, img)
 
 
 # Global stuff -------------------------------------------------------------
@@ -337,17 +344,9 @@ for s in buttons:  # For each screenful of buttons...
 print"Load Settings"
 loadSettings()  # Must come last; fiddles with Button/Icon states
 
-print "loading background.."
 img = pygame.image.load("icons/rough1.png")
 
-if img is None or img.get_height() < 320:  # Letterbox, clear background
-    screen.fill(0)
-if img:
-    screen.blit(img,
-                ((320 - img.get_width()) / 2,
-                 (480 - img.get_height()) / 2))
-pygame.display.update()
-sleep(2)
+reset_screen(screen, img)
 
 print "Initialising Modem.."
 serialport = serial.Serial("/dev/ttyUSB2", 115200, timeout=0.5)
