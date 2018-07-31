@@ -396,25 +396,25 @@ while True:
     for i, b in enumerate(buttons[screenMode]):
         b.draw(screen)
     if screenMode == 0:
-        myfont = pygame.font.SysFont("Arial", 40)
+        myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render(numberstring, 1, (255, 255, 255))
         screen.blit(label, (10, 2))
     elif screenMode == 1:
         label = myfont.render("", 1, (255, 255, 255))
         screen.blit(label, (10, 2))
-        myfont = pygame.font.SysFont("Arial", 35)
+        myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render("Calling", 1, (255, 255, 255))
         screen.blit(label, (10, 80))
-        myfont = pygame.font.SysFont("Arial", 35)
+        myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render(numberstring + "...", 1, (255, 255, 255))
-        screen.blit(label, (10, 120))
+        screen.blit(label, (10, 12))
     else:
-        myfont = pygame.font.SysFont("Arial", 35)
+        myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render(messagestring, 1, (255, 255, 255))
         screen.blit(label, (10, 2))
         label = myfont.render("Messaging", 1, (255, 255, 255))
         screen.blit(label, (10, 80))
-        myfont = pygame.font.SysFont("Arial", 35)
+        myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render(numberstring + "...", 1, (255, 255, 255))
         screen.blit(label, (10, 120))
 
