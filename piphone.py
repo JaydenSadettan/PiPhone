@@ -140,7 +140,7 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
     elif n < 10 and screenMode == 0:
         numberstring = numberstring + str(n)
     elif n == 10 and screenMode == 0:
-        numberstring = ""
+        raise SystemExit()
     elif n == 11 and screenMode == 0:
         screenMode = 2
     elif n == 12:
