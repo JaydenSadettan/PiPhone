@@ -51,7 +51,7 @@ def reset_screen(screen , img):
     if img is None or img.get_height() < 320:  # Letterbox, clear background
         screen.fill(0)
     if img:
-        screen.blit(img,
+        screen.fill(img,
                     ((320 - img.get_width()) / 2,
                      (480 - img.get_height()) / 2))
     pygame.display.update()
