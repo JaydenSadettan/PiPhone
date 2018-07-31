@@ -56,7 +56,6 @@ def reset_screen(screen, img):
                     ((320 - img.get_width()) / 2,
                      (480 - img.get_height()) / 2))
     pygame.display.update()
-    sleep(2)
 
 # Button is a simple tappable screen region.  Each has:
 #  - bounding rect ((X,Y,W,H) in pixels)
@@ -155,6 +154,7 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
     elif n == 10 and screenMode == 0:
         raise SystemExit()
     elif n == 11 and screenMode == 0:
+        reset_screen()
         screenMode = 2
     elif n == 12:
 
@@ -189,6 +189,7 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
                 messagestring = ""
                 numberstring = ""
                 reset_screen(screen, img)
+                screenMode = 0
         else:
             print("Hanging Up...")
             serialport.write("AT\r")
@@ -398,7 +399,7 @@ while True:
     if screenMode == 0:
         myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render(numberstring, 1, (255, 255, 255))
-        screen.blit(label, (10, 2))
+        screen.blit(label, (10, 120))
     elif screenMode == 1:
         label = myfont.render("", 1, (255, 255, 255))
         screen.blit(label, (10, 2))
@@ -407,7 +408,7 @@ while True:
         screen.blit(label, (10, 80))
         myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render(numberstring + "...", 1, (255, 255, 255))
-        screen.blit(label, (10, 12))
+        screen.blit(label, (10, 120))
     else:
         myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render(messagestring, 1, (255, 255, 255))
