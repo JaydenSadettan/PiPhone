@@ -48,7 +48,7 @@ class Icon:
 # Reset Screen classes ---------------------------------------------------------------
 def reset_screen(screen, img):
     print "loading background.."
-    screen.fill((255, 255, 255))
+    screen.fill((0, 0, 0))
     if img is None or img.get_height() < 320:  # Letterbox, clear background
         screen.fill(0)
     if img:
