@@ -259,7 +259,7 @@ buttons = [
      Button((50, 320, 80, 80), bg='star', cb=numericCallback, value=0),
      Button((130, 320, 80, 80), bg='0', cb=numericCallback, value=0),
      Button((210, 320, 80, 80), bg='hash', cb=numericCallback, value=0),
-     Button((50, 400, 80, 80), bg='hash', cb=numericCallback, value=11),  # Testing MyCroft, or even messages.
+     Button((50, 400, 80, 80), bg='message', cb=numericCallback, value=11),  # Testing MyCroft, or even messages.
      Button((130, 400, 80, 80), bg='call', cb=numericCallback, value=12),
      Button((210, 400, 80, 80), bg='del2', cb=numericCallback, value=10)],
     # Screen 1 for numeric input
@@ -278,7 +278,7 @@ buttons = [
      Button((50, 320, 80, 80), bg='star', cb=numericCallback, value=0),
      Button((130, 320, 80, 80), bg='0', cb=numericCallback, value=" "),
      Button((210, 320, 80, 80), bg='hash', cb=numericCallback, value=0),
-     Button((130, 400, 80, 80), bg='call', cb=numericCallback, value=12),
+     Button((130, 400, 80, 80), bg='message', cb=numericCallback, value=12),
      Button((210, 400, 80, 80), bg='del2', cb=numericCallback, value=10)],
 
 ]
