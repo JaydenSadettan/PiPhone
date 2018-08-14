@@ -152,6 +152,9 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
     elif n < 10 and screenMode == 0:
         numberstring = numberstring + str(n)
     elif n == 10 and screenMode == 0:
+        # raise SystemExit()
+        screenMode = 3
+        time.sleep(25)
         raise SystemExit()
     elif n == 11 and screenMode == 0:
         reset_screen(screen, img)
@@ -280,8 +283,36 @@ buttons = [
      Button((210, 320, 80, 80), bg='hash', cb=numericCallback, value=0),
      Button((130, 400, 80, 80), bg='message', cb=numericCallback, value=12),
      Button((210, 400, 80, 80), bg='del2', cb=numericCallback, value=10)],
+    # Alphabet
+    [Button((0, 30, 20, 20), bg='a', cb=numericCallback, value="Hi"),
+     Button((30, 30, 20, 20), bg='b', cb=numericCallback, value="Take Care"),
+     Button((60, 30, 20, 20), bg='c', cb=numericCallback, value="Thank you"),
+     Button((90, 30, 20, 20), bg='d', cb=numericCallback, value="Yes"),
+     Button((120, 30, 20, 20), bg='e', cb=numericCallback, value="No"),
+     Button((150, 30, 20, 20), bg='f', cb=numericCallback, value="I don't know"),
+     Button((180, 30, 20, 20), bg='g', cb=numericCallback, value="."),
+     Button((210, 30, 20, 20), bg='h', cb=numericCallback, value=","),
+     Button((0, 90, 20, 20), bg='i', cb=numericCallback, value="Hi"),
+     Button((30, 90, 20, 20), bg='j', cb=numericCallback, value="Take Care"),
+     Button((60, 90, 20, 20), bg='k', cb=numericCallback, value="Thank you"),
+     Button((90, 90, 20, 20), bg='l', cb=numericCallback, value="Yes"),
+     Button((120, 90, 20, 20), bg='m', cb=numericCallback, value="No"),
+     Button((150, 90, 20, 20), bg='n', cb=numericCallback, value="I don't know"),
+     Button((180, 90, 20, 20), bg='o', cb=numericCallback, value="."),
+     Button((210, 90, 20, 20), bg='p', cb=numericCallback, value=","),
+     Button((0, 150, 20, 20), bg='q', cb=numericCallback, value="Hi"),
+     Button((30, 150, 20, 20), bg='r', cb=numericCallback, value="Take Care"),
+     Button((60, 150, 20, 20), bg='s', cb=numericCallback, value="Thank you"),
+     Button((90, 150, 20, 20), bg='t', cb=numericCallback, value="Yes"),
+     Button((120, 150, 20, 20), bg='u', cb=numericCallback, value="No"),
+     Button((150, 150, 20, 20), bg='v', cb=numericCallback, value="I don't know"),
+     Button((180, 150, 20, 20), bg='w', cb=numericCallback, value="."),
+     Button((210, 150, 20, 20), bg='x', cb=numericCallback, value=","),
+     Button((90, 210, 20, 20), bg='y', cb=numericCallback, value="Yes"),
+     Button((120, 210, 20, 20), bg='z', cb=numericCallback, value="No")
+     ]
 
-]
+    ]
 
 
 # Assorted utility functions -----------------------------------------------
