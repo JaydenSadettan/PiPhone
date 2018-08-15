@@ -476,6 +476,10 @@ while True:
         myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render(numberstring + "...", 1, (255, 255, 255))
         screen.blit(label, (10, 120))
+    elif screenMode == 2:
+        myfont = pygame.font.SysFont("Arial", 20)
+        label = myfont.render(tweetstring, 1, (255, 255, 255))
+        screen.blit(label, (10, 2))
     else:
         print "hi"
     pygame.display.update()
