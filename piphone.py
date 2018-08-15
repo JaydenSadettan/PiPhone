@@ -153,12 +153,20 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
         numberstring = numberstring + str(n)
     elif n == 10 and screenMode == 0:
         # raise SystemExit()
-        screenMode = 3
-        # time.sleep(25)
-        # raise SystemExit()
+        reset_screen(screen, img)
+        screenMode = 4
     elif n == 11 and screenMode == 0:
         reset_screen(screen, img)
         screenMode = 2
+    elif screenMode == 4:
+        if n == 1:
+            reset_screen(screen, img)
+            screenMode = 0
+        elif n == 2:
+            reset_screen(screen, img)
+            screenMode = 3
+        elif n == 3:
+            raise SystemExit()
     elif n == 12:
 
         if screenMode == 0:
@@ -264,7 +272,7 @@ buttons = [
      Button((210, 320, 80, 80), bg='hash', cb=numericCallback, value=0),
      Button((50, 400, 80, 80), bg='message', cb=numericCallback, value=11),  # Testing MyCroft, or even messages.
      Button((130, 400, 80, 80), bg='call', cb=numericCallback, value=12),
-     Button((210, 400, 80, 80), bg='del2', cb=numericCallback, value=10)],
+     Button((210, 400, 80, 80), bg='right', cb=numericCallback, value=10)],
     # Screen 1 for numeric input
     [Button((50, 0, 320, 80), bg='box'),
      Button((130, 400, 80, 80), bg='hang', cb=numericCallback, value=12)],
@@ -283,35 +291,45 @@ buttons = [
      Button((210, 320, 80, 80), bg='hash', cb=numericCallback, value=0),
      Button((130, 400, 80, 80), bg='message', cb=numericCallback, value=12),
      Button((210, 400, 80, 80), bg='del2', cb=numericCallback, value=10)],
-    # Alphabet
-    [Button((20, 100, 20, 20), bg='A', cb=numericCallback, value="Hi"),
-     Button((60, 100, 20, 20), bg='B', cb=numericCallback, value="Take Care"),
-     Button((100, 100, 20, 20), bg='C', cb=numericCallback, value="Thank you"),
-     Button((140, 100, 20, 20), bg='D', cb=numericCallback, value="Yes"),
-     Button((180, 100, 20, 20), bg='E', cb=numericCallback, value="No"),
-     Button((220, 100, 20, 20), bg='F', cb=numericCallback, value="I don't know"),
-     Button((260, 100, 20, 20), bg='G', cb=numericCallback, value="."),
-     Button((300, 100, 20, 20), bg='H', cb=numericCallback, value=","),
-     Button((20, 200, 20, 20), bg='I', cb=numericCallback, value="Hi"),
-     Button((60, 200, 20, 20), bg='J', cb=numericCallback, value="Take Care"),
-     Button((100, 200, 20, 20), bg='K', cb=numericCallback, value="Thank you"),
-     Button((140, 200, 20, 20), bg='L', cb=numericCallback, value="Yes"),
-     Button((180, 200, 20, 20), bg='M', cb=numericCallback, value="No"),
-     Button((220, 200, 20, 20), bg='N', cb=numericCallback, value="I don't know"),
-     Button((260, 200, 20, 20), bg='O', cb=numericCallback, value="."),
-     Button((300, 200, 20, 20), bg='P', cb=numericCallback, value=","),
-     Button((20, 300, 20, 20), bg='Q', cb=numericCallback, value="Hi"),
-     Button((60, 300, 20, 20), bg='R', cb=numericCallback, value="Take Care"),
-     Button((100, 300, 20, 20), bg='S', cb=numericCallback, value="Thank you"),
-     Button((140, 300, 20, 20), bg='T', cb=numericCallback, value="Yes"),
-     Button((180, 300, 20, 20), bg='U', cb=numericCallback, value="No"),
-     Button((220, 300, 20, 20), bg='V', cb=numericCallback, value="I don't know"),
-     Button((260, 300, 20, 20), bg='W', cb=numericCallback, value="."),
-     Button((300, 300, 20, 20), bg='X', cb=numericCallback, value=","),
-     Button((140, 400, 20, 20), bg='Y', cb=numericCallback, value="Yes"),
-     Button((180, 400, 20, 20), bg='Z', cb=numericCallback, value="No")
-     ]
+    # Alphabet Screen 4.
+    [Button((20, 100, 20, 20), bg='A', cb=numericCallback, value="a"),
+     Button((60, 100, 20, 20), bg='B', cb=numericCallback, value="b"),
+     Button((100, 100, 20, 20), bg='C', cb=numericCallback, value="c"),
+     Button((140, 100, 20, 20), bg='D', cb=numericCallback, value="d"),
+     Button((180, 100, 20, 20), bg='E', cb=numericCallback, value="e"),
+     Button((220, 100, 20, 20), bg='F', cb=numericCallback, value="f"),
+     Button((260, 100, 20, 20), bg='G', cb=numericCallback, value="g"),
+     Button((300, 100, 20, 20), bg='H', cb=numericCallback, value="h"),
+     Button((20, 200, 20, 20), bg='I', cb=numericCallback, value="i"),
+     Button((60, 200, 20, 20), bg='J', cb=numericCallback, value="j"),
+     Button((100, 200, 20, 20), bg='K', cb=numericCallback, value="k"),
+     Button((140, 200, 20, 20), bg='L', cb=numericCallback, value="l"),
+     Button((180, 200, 20, 20), bg='M', cb=numericCallback, value="m"),
+     Button((220, 200, 20, 20), bg='N', cb=numericCallback, value="n"),
+     Button((260, 200, 20, 20), bg='O', cb=numericCallback, value="o"),
+     Button((300, 200, 20, 20), bg='P', cb=numericCallback, value="p"),
+     Button((20, 300, 20, 20), bg='Q', cb=numericCallback, value="q"),
+     Button((60, 300, 20, 20), bg='R', cb=numericCallback, value="r"),
+     Button((100, 300, 20, 20), bg='S', cb=numericCallback, value="s"),
+     Button((140, 300, 20, 20), bg='T', cb=numericCallback, value="t"),
+     Button((180, 300, 20, 20), bg='U', cb=numericCallback, value="u"),
+     Button((220, 300, 20, 20), bg='V', cb=numericCallback, value="v"),
+     Button((260, 300, 20, 20), bg='W', cb=numericCallback, value="w"),
+     Button((300, 300, 20, 20), bg='X', cb=numericCallback, value="x"),
+     Button((60, 400, 20, 20), bg='start', cb=numericCallback, value=1),
+     Button((140, 400, 20, 20), bg='Y', cb=numericCallback, value="y"),
+     Button((180, 400, 20, 20), bg='Z', cb=numericCallback, value="z"),
+     Button((260, 400, 20, 20), bg='stop', cb=numericCallback, value=0),
 
+     ],
+    [Button((50, 0, 320, 60), bg='box'),
+     Button((50, 400, 80, 80), bg='left', cb=numericCallback, value=1),
+     Button((130, 80, 80, 80), bg='twitter', cb=numericCallback, value=2),
+     Button((130, 400, 80, 80), bg='cancel', cb=numericCallback, value=3)
+
+
+
+     ]
     ]
 
 
@@ -438,7 +456,7 @@ while True:
         myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render(numberstring + "...", 1, (255, 255, 255))
         screen.blit(label, (10, 120))
-    else:
+    elif screenMode == 2:
         myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render(messagestring, 1, (255, 255, 255))
         screen.blit(label, (10, 2))
@@ -447,7 +465,8 @@ while True:
         myfont = pygame.font.SysFont("Arial", 20)
         label = myfont.render(numberstring + "...", 1, (255, 255, 255))
         screen.blit(label, (10, 120))
-
+    else:
+        print "hi"
     pygame.display.update()
 
     screenModePrior = screenMode
