@@ -22,6 +22,7 @@ import sys
 from pygame.locals import *
 from subprocess import call
 from time import sleep
+import subprocess
 from curses import ascii
 import serial
 import os
@@ -143,6 +144,7 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
     global numberstring
     global messagestring
     global phonecall
+    global tweetstring
 
     if screenMode == 2 and n != 12:
         if n == 10:
@@ -167,6 +169,15 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
             screenMode = 3
         elif n == 3:
             raise SystemExit()
+    elif screenMode == 3:
+        if n == 1:
+            #do twitter stuff send the thing
+            print tweetstring
+        elif n == 0:
+        # test
+            print "test"
+        else:
+            tweetstring = tweetstring + str(n)
     elif n == 12:
 
         if screenMode == 0:
@@ -227,6 +238,7 @@ iconPath = 'icons'  # Subdirectory containing UI bitmaps (PNG format)
 numeric = 0  # number from numeric keypad
 numberstring = ""
 messagestring = ""
+tweetstring = ""
 motorRunning = 0
 motorDirection = 0
 returnScreen = 0
