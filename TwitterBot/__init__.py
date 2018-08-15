@@ -26,7 +26,8 @@ class PyBot:
                 result = self.bot.TWITTER_CONNECTION.statuses.retweet(id=tweet["id"])
                 print("Retweeted: %s" % (result["text"].encode("utf-8")))
                 result = self.bot.TWITTER_CONNECTION.favorites.create(_id=tweet["id"])
-                print("Favorited: %s" % (result["text"].encode("utf-8")), file=sys.stdout)
+                return str("Favorited: %s" % (result["text"].encode("utf-8")))
+
 
 
             # when you have already retweeted a tweet, this error is thrown

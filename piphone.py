@@ -171,7 +171,14 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
             raise SystemExit()
     elif screenMode == 3:
         if n == 1:
-            tweetbot.work(tweetstring)
+            x = tweetbot.work(tweetstring)
+            reset_screen(screen, img)
+            myfont = pygame.font.SysFont("Arial", 20)
+            label = myfont.render(x, 1, (255, 255, 255))
+            screen.blit(label, (10, 2))
+            time.sleep(10)
+            reset_screen(screen, img)
+            tweetstring = ""
         elif n == 0:
             tweetbot.stop_work()
         else:
@@ -327,10 +334,10 @@ buttons = [
      Button((220, 300, 20, 20), bg='V', cb=numericCallback, value="v"),
      Button((260, 300, 20, 20), bg='W', cb=numericCallback, value="w"),
      Button((300, 300, 20, 20), bg='X', cb=numericCallback, value="x"),
-     Button((60, 400, 20, 20), bg='start', cb=numericCallback, value=1),
+     Button((60, 400, 60, 60), bg='start', cb=numericCallback, value=1),
      Button((140, 400, 20, 20), bg='Y', cb=numericCallback, value="y"),
      Button((180, 400, 20, 20), bg='Z', cb=numericCallback, value="z"),
-     Button((260, 400, 20, 20), bg='stop', cb=numericCallback, value=0),
+     Button((260, 400, 60, 60), bg='stop', cb=numericCallback, value=0),
 
      ],
     [Button((50, 0, 320, 60), bg='box'),
