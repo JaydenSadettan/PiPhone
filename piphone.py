@@ -27,7 +27,7 @@ from curses import ascii
 import serial
 import os
 import time
-
+from TwitterBot import PyBot
 
 # UI classes ---------------------------------------------------------------
 
@@ -171,11 +171,9 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
             raise SystemExit()
     elif screenMode == 3:
         if n == 1:
-            #do twitter stuff send the thing
-            print tweetstring
+            tweetbot.work(tweetstring)
         elif n == 0:
-        # test
-            print "test"
+            tweetbot.stop_work()
         else:
             tweetstring = tweetstring + str(n)
     elif n == 12:
@@ -239,6 +237,7 @@ numeric = 0  # number from numeric keypad
 numberstring = ""
 messagestring = ""
 tweetstring = ""
+tweetbot = PyBot()
 motorRunning = 0
 motorDirection = 0
 returnScreen = 0
