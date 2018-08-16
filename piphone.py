@@ -11,6 +11,8 @@
 # based on cam.py by Phil Burgess / Paint Your Dragon for Adafruit Industries.
 # BSD license, all text above must be included in any redistribution.
 
+import os
+os.system("sudo screen -d -m wvdial")`
 import atexit
 import cPickle as pickle
 import errno
@@ -25,7 +27,6 @@ from time import sleep
 import subprocess
 from curses import ascii
 import serial
-import os
 import time
 from TwitterBot import PyBot
 
@@ -395,7 +396,7 @@ pygame.mouse.set_visible(False)
 print "Setting fullscreen..."
 modes = pygame.display.list_modes(16)
 screen = pygame.display.set_mode(modes[0], FULLSCREEN, 16)
-os.system("sudo screen -d -m wvdial")
+
 
 
 print "Loading Icons..."
