@@ -12,7 +12,9 @@
 # BSD license, all text above must be included in any redistribution.
 
 import os
+import time
 os.system("sudo screen -d -m wvdial")
+time.sleep(30)
 import atexit
 import cPickle as pickle
 import errno
@@ -27,7 +29,6 @@ from time import sleep
 import subprocess
 from curses import ascii
 import serial
-import time
 from TwitterBot import PyBot
 
 # UI classes ---------------------------------------------------------------
