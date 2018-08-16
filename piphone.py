@@ -14,7 +14,8 @@
 import os
 import time
 os.system("sudo screen -d -m wvdial")
-time.sleep(30)
+time.sleep(15)
+print "Setting up Network"
 import atexit
 import cPickle as pickle
 import errno
@@ -425,7 +426,7 @@ img = pygame.image.load("icons/rough1.png")
 reset_screen(screen, img)
 
 print "Initialising Modem.."
-serialport = serial.Serial("/dev/ttyUSB0", 115200, timeout=0.5)
+serialport = serial.Serial("/dev/ttyUSB2", 115200, timeout=0.5)
 serialport.write("AT\r")
 response = serialport.readlines(None)
 serialport.write("ATE0\r")
