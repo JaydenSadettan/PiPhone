@@ -169,6 +169,8 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
             screenMode = 3
         elif n == 3:
             raise SystemExit()
+        elif n == 4:
+            tweetbot.work("T-Mobile")
     elif screenMode == 3:
         if n == 1:
             x = tweetbot.work(tweetstring)
@@ -334,16 +336,17 @@ buttons = [
      Button((220, 300, 20, 20), bg='V', cb=numericCallback, value="v"),
      Button((260, 300, 20, 20), bg='W', cb=numericCallback, value="w"),
      Button((300, 300, 20, 20), bg='X', cb=numericCallback, value="x"),
-     Button((60, 400, 60, 60), bg='start', cb=numericCallback, value=1),
-     Button((140, 400, 20, 20), bg='Y', cb=numericCallback, value="y"),
-     Button((180, 400, 20, 20), bg='Z', cb=numericCallback, value="z"),
-     Button((260, 400, 60, 60), bg='stop', cb=numericCallback, value=0),
+     Button((0, 400, 60, 60), bg='start', cb=numericCallback, value=1),
+     Button((140, 350, 20, 20), bg='Y', cb=numericCallback, value="y"),
+     Button((180, 350, 20, 20), bg='Z', cb=numericCallback, value="z"),
+     Button((240, 400, 60, 60), bg='stop', cb=numericCallback, value=0),
 
      ],
     [Button((50, 0, 320, 60), bg='box'),
      Button((50, 400, 80, 80), bg='left', cb=numericCallback, value=1),
      Button((130, 80, 80, 80), bg='twitter', cb=numericCallback, value=2),
-     Button((130, 400, 80, 80), bg='cancel', cb=numericCallback, value=3)
+     Button((130, 400, 80, 80), bg='cancel', cb=numericCallback, value=3),
+     Button((130, 180, 80, 80), bg='TLogo', cb=numericCallback, value=3)
 
 
 

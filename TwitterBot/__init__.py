@@ -15,20 +15,22 @@ class PyBot:
         self.bot.sync_follows()
 
     def work(self, phrase):
+        start = time.time()
         result = self.bot.search_tweets(phrase, 100, "recent")
         for tweet in result["statuses"]:
             try:
                 # don't retweet your own tweets
                 if tweet["user"]["screen_name"] == self.bot.BOT_CONFIG["TWITTER_HANDLE"]:
                     continue
-
+                self.bot.wait_on_action()
                 # self.bot.wait_on_action()
                 result = self.bot.TWITTER_CONNECTION.statuses.retweet(id=tweet["id"])
                 print("Retweeted: %s" % (result["text"].encode("utf-8")))
                 result = self.bot.TWITTER_CONNECTION.favorites.create(_id=tweet["id"])
-                return str("Favorited: %s" % (result["text"].encode("utf-8")))
+                word = str("Favorited: %s" % (result["text"].encode("utf-8")))
 
-
+                if time.time() - start > 120:
+                    return word
 
             # when you have already retweeted a tweet, this error is thrown
             except TwitterHTTPError as api_error:
@@ -42,3 +44,8 @@ class PyBot:
 
     def stop_work(self):
         raise SystemExit()
+
+
+x = PyBot()
+result = x.bot.search_tweets("Brian King")
+print (result["statuses"])
