@@ -170,10 +170,10 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
         elif n == 3:
             raise SystemExit()
         elif n == 4:
-            tweetbot.work("T-Mobile")
+            tweetbot.work("T-Mobile", False)
     elif screenMode == 3:
         if n == 1:
-            x = tweetbot.work(tweetstring)
+            x = tweetbot.work(tweetstring, True)
             reset_screen(screen, img)
             myfont = pygame.font.SysFont("Arial", 20)
             label = myfont.render(x, 1, (255, 255, 255))
