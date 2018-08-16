@@ -12,7 +12,7 @@
 # BSD license, all text above must be included in any redistribution.
 
 import os
-os.system("sudo screen -d -m wvdial")`
+os.system("sudo screen -d -m wvdial")
 import atexit
 import cPickle as pickle
 import errno
