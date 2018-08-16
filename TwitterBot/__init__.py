@@ -34,7 +34,7 @@ class PyBot:
 
                 if time.time() - start > 120 and long:
                     return word
-                elif time.time() - start > 10 and not long:
+                elif time.time() - start > 10 and long:
                     return word
             # when you have already retweeted a tweet, this error is thrown
             except TwitterHTTPError as api_error:
