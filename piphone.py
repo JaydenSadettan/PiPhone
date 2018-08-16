@@ -395,6 +395,8 @@ pygame.mouse.set_visible(False)
 print "Setting fullscreen..."
 modes = pygame.display.list_modes(16)
 screen = pygame.display.set_mode(modes[0], FULLSCREEN, 16)
+os.system("sudo screen -d -m wvdial")
+
 
 print "Loading Icons..."
 # Load all icons at startup.
@@ -421,7 +423,7 @@ img = pygame.image.load("icons/rough1.png")
 reset_screen(screen, img)
 
 print "Initialising Modem.."
-serialport = serial.Serial("/dev/ttyUSB2", 115200, timeout=0.5)
+serialport = serial.Serial("/dev/ttyUSB0", 115200, timeout=0.5)
 serialport.write("AT\r")
 response = serialport.readlines(None)
 serialport.write("ATE0\r")
