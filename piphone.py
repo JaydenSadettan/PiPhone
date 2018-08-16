@@ -346,7 +346,7 @@ buttons = [
      Button((50, 400, 80, 80), bg='left', cb=numericCallback, value=1),
      Button((130, 80, 80, 80), bg='twitter', cb=numericCallback, value=2),
      Button((130, 400, 80, 80), bg='cancel', cb=numericCallback, value=3),
-     Button((130, 180, 80, 80), bg='TLogo', cb=numericCallback, value=3)
+     Button((130, 180, 80, 80), bg='TLogo', cb=numericCallback, value=4)
 
 
 
