@@ -34,8 +34,11 @@ class PyBot:
 
                 if time.time() - start > 120 and long:
                     return word
-                elif time.time() - start > 10 and long:
+                elif time.time() - start > 10 and not long:
                     return word
+
+                print "%s" %(time.time() - start)
+
             # when you have already retweeted a tweet, this error is thrown
             except TwitterHTTPError as api_error:
                 # quit on rate limit errors
@@ -50,6 +53,6 @@ class PyBot:
         raise SystemExit()
 
 
-x = PyBot()
-result = x.bot.search_tweets("Brian King")
-print (result["statuses"])
+# x = PyBot()
+# result = x.bot.search_tweets("Brian King")
+# print (result["statuses"])

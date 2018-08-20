@@ -13,9 +13,10 @@
 
 import os
 import time
+print "Setting up Network"
 os.system("sudo screen -d -m wvdial")
 time.sleep(15)
-print "Setting up Network"
+print "Network should be set up"
 import atexit
 import cPickle as pickle
 import errno
@@ -202,7 +203,7 @@ def numericCallback(n):  # Pass 1 (next setting) or -1 (prev setting)
                 screenMode = 1
         elif screenMode == 2:
             if len(numberstring) > 0:
-                print("Message " + messagestring);
+                print("Message " + messagestring)
                 serialport.write("AT\r")
                 response = serialport.readlines(None)
                 serialport.write('AT+CMGS="%s"\r\n' % numberstring)
@@ -426,7 +427,7 @@ img = pygame.image.load("icons/rough1.png")
 reset_screen(screen, img)
 
 print "Initialising Modem.."
-serialport = serial.Serial("/dev/ttyUSB2", 115200, timeout=0.5)
+serialport = serial.Serial("/dev/ttyUSB6", 115200, timeout=0.5)
 serialport.write("AT\r")
 response = serialport.readlines(None)
 serialport.write("ATE0\r")
