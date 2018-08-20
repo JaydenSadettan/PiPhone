@@ -37,7 +37,7 @@ class PyBot:
                 elif time.time() - start > 10 and not long:
                     return word
 
-                print "%s" %(time.time() - start)
+                print("%s" %(time.time() - start))
 
             # when you have already retweeted a tweet, this error is thrown
             except TwitterHTTPError as api_error:

@@ -458,7 +458,7 @@ while True:
                     f.write("\n")
                     f.close()
                     if b.selected(pos):
-                        break;
+                        break
                 screen_change = 1
             # if screenMode >= 1 or screenMode != screenModePrior: break
         if screen_change == 1 or screenMode != screenModePrior: break
