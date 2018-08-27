@@ -17,6 +17,7 @@ print "Setting up Network"
 os.system("sudo screen -d -m wvdial")
 time.sleep(15)
 print "Network should be set up"
+os.system("sudo ip route add default via 21.178.96.71")
 import atexit
 import cPickle as pickle
 import errno
@@ -427,7 +428,10 @@ img = pygame.image.load("icons/rough1.png")
 reset_screen(screen, img)
 
 print "Initialising Modem.."
-serialport = serial.Serial("/dev/ttyUSB6", 115200, timeout=0.5)
+try:
+    serialport = serial.Serial("/dev/ttyUSB0", 115200, timeout=0.5)
+except:
+    serialport = serial.Serial("/dev/ttyUSB3", 115200, timeout=0.5)
 serialport.write("AT\r")
 response = serialport.readlines(None)
 serialport.write("ATE0\r")
